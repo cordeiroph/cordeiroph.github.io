@@ -200,7 +200,7 @@ function operatingSytem() {
     console.log('Platform: ' + platform);
     printLog('Platform: ' + platform);
     console.log('Office version: ' + contextInfo.version);
-    printLog('Office version: ' + contextInfo.version);
+    printLog('Office version2: ' + contextInfo.version);
     printLog(platform);
 
     //Add code here to write above information to message body as well as console.
