@@ -87,7 +87,7 @@ async function tryPost(event, subject, from, to, cc, bcc, body, attachments) {
 }
 
 async function getAttachment(message, id, result, attachments, post, continuation) {
-    printLog("Getting attachment")
+    printLog("Getting attachment");
     message.getAttachmentContentAsync(id, data => {
         let attachment = {
             "data": data.value.content,
@@ -103,12 +103,12 @@ async function getAttachment(message, id, result, attachments, post, continuatio
 }
 
 async function getAttachmentsList(message, event, subject, from, to, cc, bcc, body) {
-    printLog("Getting attachments")
+    printLog("Getting attachments");
     message.getAttachmentsAsync(result => {
         let attachments = [];
         if (result.status === Office.AsyncResultStatus.Succeeded) {
             if (result.value.length > 0) {
-                printLog("Total attachments: "+result.value.length)
+                printLog("Total attachments: "+result.value.length);
                 const length = result.value.length;
                 for (let i = 0; i < length; i++) {
                     const id = result.value[i].id;
@@ -119,7 +119,7 @@ async function getAttachmentsList(message, event, subject, from, to, cc, bcc, bo
                     });
                 }
             } else {
-                printLog("No attachments")
+                printLog("No attachments");
                 tryPost(event, subject, from, to, cc, bcc, body, attachments);
             }
         }
@@ -137,7 +137,7 @@ function getIfVal(result)
 async function validate(event) {
     message = Office.context.mailbox.item;
     if (message.itemType == "appointment") {
-        printLog("Validating appointment")
+        printLog("Validating appointment");
         message.subject.getAsync(result => {
             let subject = getIfVal(result);
             message.organizer.getAsync(result => {
@@ -155,7 +155,7 @@ async function validate(event) {
             });
         });
     } else if (message.itemType == "message") {
-        printLog("Validating message")
+        printLog("Validating message");
         message.subject.getAsync(result => {
             let subject = getIfVal(result);
             message.from.getAsync(result => {
@@ -178,8 +178,8 @@ async function validate(event) {
     } else {
         console.log("message item type unknown");
         console.log(message.itemType);
-        printLog("message item type unknown")
-        printLog(message.itemType)
+        printLog("message item type unknown");
+        printLog(message.itemType);
         handleError("Unknown Message Type", event)
     }
 }
@@ -187,24 +187,25 @@ async function validate(event) {
 function handleError(data, event) {
     console.log(data);
     console.log(event);
-    printLog("Completing event: "+data)
+    printLog("Completing event: "+data);
     event.completed({ allowEvent: true });
-    printLog("Event Completed")
+    printLog("Event Completed");
 }
 
 function operatingSytem() { 
     var contextInfo = Office.context.diagnostics;
+    var platform = contextInfo.platform;
     console.log('Office application: ' + contextInfo.host);
-    printLog('Office application: ' + contextInfo.host)
-    console.log('Platform: ' + contextInfo.platform);
-    printLog('Platform: ' + contextInfo.platform)
+    printLog('Office application: ' + contextInfo.host);
+    console.log('Platform: ' + platform);
+    printLog('Platform: ' + platform);
     console.log('Office version: ' + contextInfo.version);
-    printLog('Office version: ' + contextInfo.version)
+    printLog('Office version: ' + contextInfo.version);
 
     //Add code here to write above information to message body as well as console.
-    if(contextInfo.platform == 'Mac'){return 'MacOS';}
-    if(contextInfo.platform == 'OfficeOnline'){return 'MacOS';}
-    if(contextInfo.platform == 'PC'){return 'Other';}
+    if(platform == 'Mac'){return 'MacOS';}
+    if(platform == 'OfficeOnline'){return 'MacOS';}
+    if(platform == 'PC'){return 'Other';}
     return 'Other'
 } 
 
@@ -214,12 +215,12 @@ function validateBody(event) {
             type: "progressIndicator",
             message: "Microsoft is working on your request.",
         });
-        printLog("FP email validation started")
+        printLog("FP email validation started");
         if(operatingSytem() == "MacOS"){
-            printLog("MacOS detected")
+            printLog("MacOS detected");
             validate(event).catch(data => {handleError(data, event)});
         } else{
-            printLog("OS is not MacOS")
+            printLog("OS is not MacOS");
             handleError("Not MacOS", event);
         }
     });
