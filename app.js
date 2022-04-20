@@ -201,12 +201,13 @@ function operatingSytem() {
     printLog('Platform: ' + platform);
     console.log('Office version: ' + contextInfo.version);
     printLog('Office version: ' + contextInfo.version);
+    printLog(platform);
 
     //Add code here to write above information to message body as well as console.
-    if(platform == 'Mac'){return 'MacOS';}
-    if(platform == 'OfficeOnline'){return 'MacOS';}
-    if(platform == 'PC'){return 'Other';}
-    return 'Other'
+    if(platform == "Mac"){return 'MacOS';}
+    if(platform == "OfficeOnline"){return 'MacOS';}
+    if(platform == "PC"){return 'Other';}
+    return "Other"
 } 
 
 function validateBody(event) {
