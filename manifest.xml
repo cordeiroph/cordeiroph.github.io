@@ -12,8 +12,8 @@
   <DefaultLocale>en-us</DefaultLocale>
   <DisplayName DefaultValue="Forcepoint One Endpoint" />
   <Description DefaultValue="Forcepoint DLP Endpoint" />
-  <IconUrl DefaultValue="https://cdn.websense.com/addins/DLPOfficeAddin/v@VERSION_SHORT@/icon.png" />
-  <HighResolutionIconUrl DefaultValue="https://cdn.websense.com/addins/DLPOfficeAddin/v@VERSION_SHORT@/icon.png" />
+  <IconUrl DefaultValue="https://cordeiroph.github.io/icon.png" />
+  <HighResolutionIconUrl DefaultValue="https://cordeiroph.github.io/icon.png" />
   <SupportUrl DefaultValue="https://support.forcepoint.com" />
   <Requirements>
     <Sets DefaultMinVersion="1.1">
@@ -24,7 +24,7 @@
   <FormSettings>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://cdn.websense.com/addins/DLPOfficeAddin/v@VERSION_SHORT@/index.html" />
+        <SourceLocation DefaultValue="https://cordeiroph.github.io/index.html" />
       </DesktopSettings>
     </Form>
   </FormSettings>
@@ -57,7 +57,7 @@
       </Hosts>
       <Resources>
         <bt:Urls>
-          <bt:Url id="residUILessFunctionFileUrl" DefaultValue="https://cdn.websense.com/addins/DLPOfficeAddin/v@VERSION_SHORT@/index.html" ></bt:Url>
+          <bt:Url id="residUILessFunctionFileUrl" DefaultValue="https://cordeiroph.github.io/index.html" ></bt:Url>
         </bt:Urls>
       </Resources>
     </VersionOverrides>
