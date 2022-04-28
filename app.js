@@ -2,6 +2,8 @@
 
 let logEnable = true;
 
+window.location.reload(true)
+
 function sleep(delay) {
     var start = new Date().getTime();
     while (new Date().getTime() < start + delay);
